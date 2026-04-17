@@ -77,6 +77,9 @@ export const Footer = () => {
           >
             Designed By <span className="text-primary group-hover:text-primary-dark transition-colors">CodeFONS</span>
           </a>
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 -mt-6 mb-2">
+            make <span className="text-slate-400">CF</span> yourself
+          </p>
           <p className="text-slate-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
             © {new Date().getFullYear()} QuantaFONS Pvt Ltd.
           </p>
