@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 
 const tech = [
   { name: 'React', color: '#61DAFB' },

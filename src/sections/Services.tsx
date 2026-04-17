@@ -9,12 +9,6 @@ const iconMap: Record<string, React.ElementType> = {
   Cpu,
 };
 
-const serviceColors = [
-  'bg-slate-900 border-slate-800',
-  'bg-primary border-primary',
-  'bg-slate-900 border-slate-800',
-  'bg-primary border-primary',
-];
 
 export const Services = () => {
   return (
