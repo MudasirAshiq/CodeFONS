@@ -86,7 +86,7 @@ export const Hero = () => {
           className="text-hero font-display mb-8 leading-[1.05]"
         >
           <span className="text-shine-travel">We Design</span>{' '}
-          <span className="gradient-text">Intelligent</span>
+          <span className="gradient-text">Intelligent</span>{' '}
           <br className="hidden sm:block" />
           <span className="gradient-text-warm">Software Ecosystems</span>
         </motion.h1>
