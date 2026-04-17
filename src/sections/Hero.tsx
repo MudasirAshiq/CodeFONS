@@ -83,9 +83,9 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-hero font-display text-slate-900 mb-8 leading-[1.05]"
+          className="text-hero font-display mb-8 leading-[1.05]"
         >
-          We Design{' '}
+          <span className="text-shine-travel">We Design</span>{' '}
           <span className="gradient-text">Intelligent</span>
           <br className="hidden sm:block" />
           <span className="gradient-text-warm">Software Ecosystems</span>

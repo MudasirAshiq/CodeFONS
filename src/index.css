@@ -67,10 +67,9 @@
 }
 
 /* ====== ANIMATIONS ====== */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes text-travel {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 @keyframes float-gentle {
@@ -86,18 +85,48 @@
 
 /* ====== UTILITY CLASSES ====== */
 .gradient-text {
-  background: var(--gradient-primary);
-  background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
+  background: linear-gradient(
+    90deg, 
+    var(--primary) 0%, 
+    var(--secondary) 25%, 
+    #fff 50%, 
+    var(--secondary) 75%, 
+    var(--primary) 100%
+  );
+  background-size: 200% auto;
+  animation: text-travel 4s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-warm {
-  background: var(--gradient-warm);
-  background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
+  background: linear-gradient(
+    90deg, 
+    #f59e0b 0%, 
+    #ef4444 25%, 
+    #fff 50%, 
+    #ef4444 75%, 
+    #f59e0b 100%
+  );
+  background-size: 200% auto;
+  animation: text-travel 4s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-shine-travel {
+  background: linear-gradient(
+    90deg, 
+    #0f172a 0%, 
+    #0f172a 40%, 
+    var(--primary) 50%, 
+    #0f172a 60%, 
+    #0f172a 100%
+  );
+  background-size: 200% auto;
+  animation: text-travel 5s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
