@@ -110,6 +110,13 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
                   <span className="px-2 py-0.5 rounded-full text-[7px] sm:text-[9px] font-black uppercase tracking-[0.2em] bg-slate-900 text-white shadow-lg">
                     {project.category}
                   </span>
+                  <div className="flex items-center gap-2 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-[7px] sm:text-[9px] font-black uppercase tracking-widest text-emerald-600">Live</span>
+                  </div>
                   <div className="h-[1px] w-6 sm:w-8 bg-slate-900/10 hidden sm:block" />
                 </div>
                 <h3 className="text-xl sm:text-3xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-none group-hover:text-primary transition-colors duration-500">
@@ -129,7 +136,7 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-slate-900 text-white text-[10px] sm:text-sm font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl hover:-translate-y-1 active:scale-95 group/btn"
               >
-                Launch App
+                Live Preview
                 <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
               </a>
             </div>

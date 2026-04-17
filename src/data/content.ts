@@ -83,14 +83,6 @@ export const projects: Project[] = [
     link: "https://www.abcbooks.store/",
   },
   {
-    name: "KVPDA",
-    description: "Professional networking portal for veterinary science experts.",
-    tech: ["React", "PostgreSQL", "Express"],
-    category: "web",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
-    link: "#",
-  },
-  {
     name: "Indo-Persian Arts",
     description: "Curated collection where Mughal grandeur meets Persian elegance, featuring exquisite artistry and textiles.",
     tech: ["Art Portfolio", "E-commerce", "Cultural Heritage"],
@@ -121,6 +113,14 @@ export const projects: Project[] = [
     category: "web",
     image: "/kgf-preview.png",
     link: "https://www.kashmirgreenfuel.com/",
+  },
+  {
+    name: "KVPDA",
+    description: "The official portal for the Kashmir Valley Petroleum Dealers association, unified digital ecosystem for petroleum trade.",
+    tech: ["React", "PostgreSQL", "Tailwind"],
+    category: "web",
+    image: "/kvpda-preview.png",
+    link: "https://kvpda.vercel.app/",
   },
 ];
 
