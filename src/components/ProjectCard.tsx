@@ -58,8 +58,24 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
         rotateY: !isTablet ? rotateY : 0,
         transformStyle: 'preserve-3d',
       }}
-      className={`group relative h-[460px] sm:h-[600px] lg:h-[650px] w-full rounded-[40px] overflow-hidden bg-slate-50 border shadow-2xl transition-all duration-700 ${isMobile ? 'border-white/20 ring-4 ring-black/5' : 'border-slate-100'}`}
+      className="group relative h-[460px] sm:h-[600px] lg:h-[650px] w-full rounded-[40px] overflow-hidden transition-all duration-700 p-[1px]"
     >
+      {/* High-End Neon Border Trail - Active only on Mobile & Tablet */}
+      {(isMobile || isTablet) && (
+        <div className="absolute inset-0 rounded-[40px] overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[200%] h-[200%] top-[-50%] left-[-50%]"
+            style={{
+              background: 'conic-gradient(from 0deg, transparent 0%, transparent 40%, var(--primary) 50%, transparent 60%, transparent 100%)',
+            }}
+          />
+        </div>
+      )}
+
+      {/* Main Card Body */}
+      <div className={`relative z-10 w-full h-full rounded-[39px] overflow-hidden bg-slate-50 border shadow-2xl flex flex-col ${isMobile ? 'border-white/20 ring-4 ring-black/5' : 'border-slate-100'}`}>
       {/* Background Preview Image - Optimized for Mobile visibility */}
       <div className="absolute inset-0 z-0 bg-slate-100 overflow-hidden">
         <motion.div
@@ -162,6 +178,8 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
             </div>
           </div>
         </motion.div>
+      </div>
+
       </div>
 
       {/* Decorative Effects */}
