@@ -58,7 +58,7 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
         rotateY: !isTablet ? rotateY : 0,
         transformStyle: 'preserve-3d',
       }}
-      className="group relative h-[460px] sm:h-[600px] lg:h-[650px] w-full rounded-[40px] overflow-hidden bg-slate-50 border border-slate-100 shadow-2xl transition-all duration-700"
+      className={`group relative h-[460px] sm:h-[600px] lg:h-[650px] w-full rounded-[40px] overflow-hidden bg-slate-50 border shadow-2xl transition-all duration-700 ${isMobile ? 'border-white/20 ring-4 ring-black/5' : 'border-slate-100'}`}
     >
       {/* Background Preview Image - Optimized for Mobile visibility */}
       <div className="absolute inset-0 z-0 bg-slate-100 overflow-hidden">
@@ -71,21 +71,41 @@ export const ProjectCard = ({ project, index = 1 }: ProjectCardProps) => {
            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
            className="relative w-full h-full"
         >
-          {/* Mock Browser Header */}
-          <div className="absolute top-0 left-0 right-0 h-6 bg-white/10 backdrop-blur-md z-10 flex items-center px-4 gap-1.5 border-b border-white/5">
-            <div className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
-            <div className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/50" />
+          {/* Mock UI Header: Switches between Browser (Desktop) and Phone (Mobile) */}
+          <div className={`absolute top-0 left-0 right-0 z-10 flex items-center border-b border-white/5 backdrop-blur-md transition-all duration-500 ${isMobile ? 'h-8 px-6 justify-between bg-black/40' : 'h-6 px-4 gap-1.5 bg-white/10'}`}>
+            {isMobile ? (
+              <>
+                <span className="text-[10px] font-bold text-white/70">9:41</span>
+                <div className="w-20 h-4 bg-black/60 rounded-full flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-blue-500/50 mr-2" />
+                  <div className="w-8 h-1 rounded-full bg-white/10" />
+                </div>
+                <div className="flex gap-1.5 items-center">
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4].map(i => <div key={i} className="w-0.5 h-2 bg-white/40 rounded-full" />)}
+                  </div>
+                  <div className="w-4 h-2 rounded-sm border border-white/30 flex items-center px-0.5">
+                    <div className="w-full h-full bg-white/60 rounded-xs" />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/50" />
+              </>
+            )}
           </div>
 
           <img
-            src={project.image}
+            src={(isMobile && project.mobileImage) ? project.mobileImage : project.image}
             alt={project.name}
-            className="w-full h-full object-contain object-top p-4 sm:p-8 transition-all duration-1000"
+            className={`w-full h-full transition-all duration-1000 ${isMobile ? 'object-cover' : 'object-contain object-top p-4 sm:p-8'}`}
             loading="lazy"
           />
           {/* Multi-layer gradient - bottom heavy for text readability, clearer on top */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-85" />
           <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
         </motion.div>
       </div>

@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, Sparkles, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 const contactInfo = [
   { icon: Mail, label: 'Email us', value: 'mail@codefons.com', color: 'text-primary bg-primary/5', href: 'mailto:mail@codefons.com' },
@@ -8,6 +9,67 @@ const contactInfo = [
 ];
 
 export const Contact = () => {
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    projectType: 'SaaS Web App',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const validateForm = () => {
+    if (!formState.name.trim()) return "Please enter your name.";
+    if (!formState.email.trim() || !/^\S+@\S+\.\S+$/.test(formState.email)) return "Please enter a valid email address.";
+    if (!formState.message.trim()) return "Please enter a message.";
+    return null;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const error = validateForm();
+    if (error) {
+      setErrorMessage(error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+      return;
+    }
+
+    setStatus('loading');
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "602b5470-b912-45a5-bdf1-33c00be906b9",
+          name: formState.name,
+          email: formState.email,
+          project_type: formState.projectType,
+          message: formState.message,
+          from_name: "QuantaFONS Portfolio",
+          subject: `New Project Inquiry from ${formState.name}`
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setFormState({ name: '', email: '', projectType: 'SaaS Web App', message: '' });
+      } else {
+        setErrorMessage(result.message || "Failed to send message.");
+        setStatus('error');
+      }
+    } catch (err) {
+      setErrorMessage("Something went wrong. Please try again later.");
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-section px-6 relative overflow-hidden bg-slate-50">
       {/* Beautiful Abstract Map Background */}
@@ -19,7 +81,7 @@ export const Contact = () => {
               <stop offset="100%" stopColor="transparent" />
             </radialGradient>
           </defs>
-          {/* Abstract World/India Dots Pattern */}
+          {/* Abstract World Patterns */}
           <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
              <circle cx="2" cy="2" r="1" fill="#cbd5e1" />
           </pattern>
@@ -108,62 +170,135 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Right side - Form */}
-          <div className="relative group/form">
-            {/* Modern Animated Border Effect */}
-            <div className="absolute -inset-[2px] rounded-[34px] sm:rounded-[42px] lg:rounded-[46px] bg-gradient-to-r from-primary via-accent-cyan to-secondary opacity-20 group-hover:opacity-100 blur-sm transition-opacity duration-1000 animate-pulse-slow" />
-            
-            <div className="bg-white rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-2xl shadow-slate-200 relative border border-slate-100 overflow-hidden">
-               {/* Animated Edge Light (Infinite Trail) */}
-               <motion.div
-                  animate={{ 
-                    rotate: 360 
-                  }}
-                  transition={{ 
-                    duration: 10, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                  className="absolute -inset-[200%] bg-gradient-conic from-primary/40 via-transparent to-transparent opacity-0 group-hover/form:opacity-100 transition-opacity duration-700 pointer-events-none"
-               />
+          {/* Right side - Form Container with Perfect Border Trail */}
+          <div className="relative group/form p-[1px] rounded-[32px] sm:rounded-[40px] overflow-hidden transition-all duration-700">
+            {/* The Rotating Neon Trail (Layer 0) - Always active for a premium ambient glow */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[-150%] opacity-100 transition-opacity duration-500 z-0"
+              style={{
+                background: 'conic-gradient(from 0deg, transparent 0%, transparent 40%, #0ea5e9 50%, transparent 60%, transparent 100%)',
+              }}
+            />
 
-               <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-primary/10 animate-pulse">
-                <Sparkles size={24} className="sm:hidden" />
-                <Sparkles size={32} className="hidden sm:block" />
+            {/* Main Form Body (Layer 1) - Slightly smaller rounded corners to fit inside p-[1px] */}
+            <div className="relative z-10 bg-white/95 backdrop-blur-3xl rounded-[31px] sm:rounded-[39px] p-6 sm:p-10 lg:p-14 shadow-2xl flex flex-col justify-center overflow-hidden h-full">
+              <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-primary/10 animate-pulse">
+                <Sparkles size={32} />
               </div>
 
-              <form className="relative z-10 space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Full Name</label>
-                    <input type="text" placeholder="Your Name" className="premium-input" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Email Address</label>
-                    <input type="email" placeholder="email@address.com" className="premium-input" />
-                  </div>
-                </div>
+              <AnimatePresence mode="wait">
+                {status === 'success' ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.1 }}
+                    className="flex flex-col items-center text-center space-y-6 relative z-10"
+                  >
+                    <div className="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                      <CheckCircle2 size={48} />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-black text-slate-900">Message Received!</h3>
+                      <p className="text-slate-500 max-w-xs mx-auto">Thank you for reaching out. Our engineering team will get back to you within 24 hours.</p>
+                    </div>
+                    <button 
+                      onClick={() => setStatus('idle')}
+                      className="px-8 py-3 rounded-full bg-slate-900 text-white font-bold text-sm tracking-widest uppercase hover:bg-slate-800 transition-all"
+                    >
+                      Send Another
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form 
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleSubmit} 
+                    className="relative z-10 space-y-6"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Full Name</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={formState.name}
+                          onChange={(e) => setFormState({...formState, name: e.target.value})}
+                          placeholder="Your Name" 
+                          className="premium-input" 
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Email Address</label>
+                        <input 
+                          type="email" 
+                          required
+                          value={formState.email}
+                          onChange={(e) => setFormState({...formState, email: e.target.value})}
+                          placeholder="email@address.com" 
+                          className="premium-input" 
+                        />
+                      </div>
+                    </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Project Type</label>
-                  <select className="premium-input appearance-none bg-slate-50">
-                    <option>SaaS Web App</option>
-                    <option>Mobile Application</option>
-                    <option>AI / ML Implementation</option>
-                    <option>Cloud Infrastructure</option>
-                  </select>
-                </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Project Type</label>
+                      <select 
+                        value={formState.projectType}
+                        onChange={(e) => setFormState({...formState, projectType: e.target.value})}
+                        className="premium-input appearance-none bg-slate-50"
+                      >
+                        <option>SaaS Web App</option>
+                        <option>Mobile Application</option>
+                        <option>AI / ML Implementation</option>
+                        <option>Cloud Infrastructure</option>
+                      </select>
+                    </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Message</label>
-                  <textarea rows={4} placeholder="Tell us about your project challenges..." className="premium-input resize-none" />
-                </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Message</label>
+                      <textarea 
+                        rows={4} 
+                        required
+                        value={formState.message}
+                        onChange={(e) => setFormState({...formState, message: e.target.value})}
+                        placeholder="Tell us about your project challenges..." 
+                        className="premium-input resize-none" 
+                      />
+                    </div>
 
-                <button type="submit" className="w-full py-5 rounded-full font-bold bg-slate-900 text-white shadow-xl hover:bg-slate-800 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3">
-                  Send Your Inquiry
-                  <Send size={18} />
-                </button>
-              </form>
+                    {status === 'error' && (
+                      <motion.p 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-red-500 text-xs font-bold flex items-center gap-2 px-1"
+                      >
+                        <AlertCircle size={14} />
+                        {errorMessage}
+                      </motion.p>
+                    )}
+
+                    <button 
+                      type="submit" 
+                      disabled={status === 'loading'}
+                      className="w-full py-5 rounded-full font-bold bg-slate-900 text-white shadow-xl hover:bg-slate-800 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
+                    >
+                      {status === 'loading' ? (
+                        <Loader2 className="animate-spin" size={18} />
+                      ) : (
+                        <>
+                          Send Your Inquiry
+                          <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ export interface Project {
   tech: string[];
   category: ProjectCategory;
   image: string;
+  mobileImage?: string; // Optional mobile-specific preview image
   link: string;
 }
 
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "Node.js", "MongoDB"],
     category: "web",
     image: "/jktroutfeed-preview.png",
+    mobileImage: "/jktroutfeed-mobile.png",
     link: "https://jktroutfeed.com",
   },
   {
@@ -24,6 +26,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "AI Engine", "Tailwind"],
     category: "ai",
     image: "/boostplus-preview.png",
+    mobileImage: "/boostplus-mobile.png",
     link: "https://boostplus.ai/",
   },
   {
@@ -32,6 +35,7 @@ export const projects: Project[] = [
     tech: ["Biometrics", "AI Intelligence", "Edge Computing"],
     category: "ai",
     image: "/qid-preview.png",
+    mobileImage: "/qid-mobile.png",
     link: "https://www.q-id.live/",
   },
   {
@@ -40,6 +44,7 @@ export const projects: Project[] = [
     tech: ["Sovereign Eng", "IT Advisory", "Cloud Infrastructure"],
     category: "web",
     image: "/abaliqa-preview.png",
+    mobileImage: "/abaliqa-mobile.png",
     link: "https://abaliqa.com/",
   },
   {
@@ -48,6 +53,7 @@ export const projects: Project[] = [
     tech: ["Bio-Fuel", "Sustainability", "Green Tech"],
     category: "web",
     image: "/ecotherm-preview.png",
+    mobileImage: "/ecotherm-mobile.png",
     link: "https://www.ecothermagrotech.com/",
   },
   {
@@ -56,6 +62,7 @@ export const projects: Project[] = [
     tech: ["iOS", "Healthcare", "Reference"],
     category: "mobile",
     image: "/clinicalpearl-preview.png",
+    mobileImage: "/clinicalpearl-mobile.png",
     link: "https://apps.apple.com/us/app/clinical-pearl/id1614000903",
   },
   {
@@ -64,6 +71,7 @@ export const projects: Project[] = [
     tech: ["Android", "Healthcare", "RPM"],
     category: "mobile",
     image: "/docwatch-preview.png",
+    mobileImage: "/docwatch-mobile.png",
     link: "https://play.google.com/store/apps/details?id=com.docwatch",
   },
   {
@@ -72,6 +80,7 @@ export const projects: Project[] = [
     tech: ["Kashmir Travel", "AI Search", "Hospitality"],
     category: "web",
     image: "/travelvictor-preview.png",
+    mobileImage: "/travelvictor-mobile.png",
     link: "https://www.travelvictor.com/",
   },
   {
@@ -80,6 +89,7 @@ export const projects: Project[] = [
     tech: ["E-commerce", "Legacy", "Bookstore"],
     category: "web",
     image: "/abcbooks-preview.png",
+    mobileImage: "/abcbooks-mobile.png",
     link: "https://www.abcbooks.store/",
   },
   {
@@ -88,6 +98,7 @@ export const projects: Project[] = [
     tech: ["Art Portfolio", "E-commerce", "Cultural Heritage"],
     category: "web",
     image: "/indopersian-preview.png",
+    mobileImage: "/indopersian-mobile.png",
     link: "https://indopersianarts.com/",
   },
   {
@@ -104,6 +115,7 @@ export const projects: Project[] = [
     tech: ["Research Hub", "Collaboration", "Academic"],
     category: "web",
     image: "/journalclub-preview.png",
+    mobileImage: "/journalclub-mobile.png",
     link: "https://journalclub.net/",
   },
   {
@@ -112,6 +124,7 @@ export const projects: Project[] = [
     tech: ["Clean Energy", "Bio-Energy", "Circular Economy"],
     category: "web",
     image: "/kgf-preview.png",
+    mobileImage: "/kgf-mobile.png",
     link: "https://www.kashmirgreenfuel.com/",
   },
   {
@@ -120,6 +133,7 @@ export const projects: Project[] = [
     tech: ["React", "PostgreSQL", "Tailwind"],
     category: "web",
     image: "/kvpda-preview.png",
+    mobileImage: "/kvpda-mobile.png",
     link: "https://kvpda.vercel.app/",
   },
 ];
