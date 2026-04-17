@@ -73,9 +73,20 @@ export const Footer = () => {
             href="https://www.codefons.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group px-8 py-3 rounded-full border border-slate-200 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 hover:border-slate-900 transition-all duration-500 bg-white shadow-sm hover:shadow-xl flex items-center gap-2"
+            className="group px-8 py-3 rounded-full border border-slate-200 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 hover:border-slate-900 transition-all duration-500 bg-white shadow-sm hover:shadow-xl flex items-center gap-3"
           >
-            Designed By <span className="text-primary group-hover:text-primary-dark transition-colors">CodeFONS</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-300">Designed by</span>
+              <div className="flex items-center gap-2">
+                <span className="text-primary group-hover:text-primary-dark transition-colors">CodeFONS</span>
+                {/* Custom CF Sign Monogram */}
+                <div className="flex items-center justify-center w-5 h-5 rounded-lg bg-slate-900 text-white shadow-lg group-hover:scale-110 transition-transform">
+                  <svg viewBox="0 0 100 100" className="w-3 h-3 fill-current">
+                    <path d="M40 30h30v10H50v10h20v10H50v10h-20V30zm-20 0h10v40H20V30z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </a>
           <p className="text-slate-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
             © {new Date().getFullYear()} QuantaFONS Pvt Ltd.
