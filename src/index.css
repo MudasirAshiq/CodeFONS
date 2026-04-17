@@ -87,14 +87,14 @@
 .gradient-text {
   background: linear-gradient(
     90deg, 
-    var(--primary) 0%, 
-    var(--secondary) 25%, 
+    #6366f1 0%, 
+    #06b6d4 25%, 
     #fff 50%, 
-    var(--secondary) 75%, 
-    var(--primary) 100%
+    #ec4899 75%, 
+    #6366f1 100%
   );
   background-size: 200% auto;
-  animation: text-travel 4s linear infinite;
+  animation: text-travel 6s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -104,13 +104,13 @@
   background: linear-gradient(
     90deg, 
     #f59e0b 0%, 
-    #ef4444 25%, 
+    #f43f5e 25%, 
     #fff 50%, 
-    #ef4444 75%, 
+    #8b5cf6 75%, 
     #f59e0b 100%
   );
   background-size: 200% auto;
-  animation: text-travel 4s linear infinite;
+  animation: text-travel 6s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -120,13 +120,14 @@
   background: linear-gradient(
     90deg, 
     #0f172a 0%, 
-    #0f172a 40%, 
-    var(--primary) 50%, 
-    #0f172a 60%, 
+    #0f172a 35%, 
+    #6366f1 45%, 
+    #06b6d4 55%, 
+    #0f172a 65%, 
     #0f172a 100%
   );
   background-size: 200% auto;
-  animation: text-travel 5s linear infinite;
+  animation: text-travel 7s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
