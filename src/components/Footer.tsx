@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 const socialLinks = [
@@ -69,10 +70,9 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-15 border-t border-slate-100 flex flex-col items-center justify-center gap-10 text-center">
-          <a 
-            href="https://www.codefons.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link 
+            to="/" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="group px-8 py-3 rounded-full border border-slate-800 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400/80 hover:text-white hover:border-primary/50 transition-all duration-500 bg-slate-900 shadow-sm hover:shadow-2xl hover:shadow-primary/10 flex items-center gap-3"
           >
             <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ export const Footer = () => {
                 <span className="text-primary group-hover:text-primary-dark transition-colors normal-case font-bold">CodeFONS</span>
               </div>
             </div>
-          </a>
+          </Link>
           <p className="text-slate-300 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
             © {new Date().getFullYear()} QuantaFONS Pvt Ltd.
           </p>
