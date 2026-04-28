@@ -21,8 +21,8 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-5 space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-xl">
-                <Sparkles size={20} className="text-white" />
+              <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-xl flex items-center justify-center">
+                <img src="/logo-icon.png" alt="CodeFONS" className="w-full h-full object-cover" />
               </div>
               <div className="space-y-1">
                 <span className="text-2xl font-bold font-display text-slate-900 tracking-tight">CodeFONS</span>
@@ -79,7 +79,7 @@ export const Footer = () => {
               <span className="text-slate-300">Designed by</span>
               <div className="flex items-center gap-2.5">
                 <span className="text-primary group-hover:text-primary-dark transition-colors normal-case font-bold">CodeFONS</span>
-                <img src="/cf-logo.png" alt="CF" className="w-6 h-6 rounded-lg shadow-lg group-hover:scale-110 transition-transform" />
+                <img src="/logo-icon.png" alt="CF" className="w-6 h-6 rounded-lg shadow-lg group-hover:scale-110 transition-transform" />
               </div>
             </div>
           </a>

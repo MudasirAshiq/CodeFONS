@@ -92,8 +92,8 @@ export const Navbar = () => {
           className="flex items-center gap-1.5 sm:gap-2.5 group shrink-0"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <Sparkles size={16} className="text-white" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform flex items-center justify-center">
+            <img src="/logo-icon.png" alt="CodeFONS" className="w-full h-full object-cover" />
           </div>
           <span className="text-lg sm:text-xl font-bold font-display tracking-tight whitespace-nowrap">
             <span className="text-slate-900">Code</span>
@@ -173,7 +173,7 @@ export const Navbar = () => {
                     className="flex items-center justify-between py-5 px-6 rounded-2xl text-xl font-bold text-slate-900 hover:text-primary hover:bg-primary/5 transition-all active:scale-95"
                   >
                     {link.name}
-                    <Sparkles size={16} className="text-primary/20" />
+                    <img src="/logo-icon.png" alt="" className="w-4 h-4 rounded-md object-cover opacity-50" />
                   </Link>
                 </motion.div>
               ))}
