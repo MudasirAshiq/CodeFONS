@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Instagram, Sparkles, ArrowUpRight } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 const socialLinks = [
   { Icon: Twitter, href: '#', label: 'Twitter' },
