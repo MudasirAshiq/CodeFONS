@@ -73,7 +73,7 @@ export const Footer = () => {
             href="https://www.codefons.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group px-8 py-3 rounded-full border border-slate-200 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 hover:border-slate-900 transition-all duration-500 bg-white shadow-sm hover:shadow-xl flex items-center gap-3"
+            className="group px-8 py-3 rounded-full border border-slate-800 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400/80 hover:text-white hover:border-primary/50 transition-all duration-500 bg-slate-900 shadow-sm hover:shadow-2xl hover:shadow-primary/10 flex items-center gap-3"
           >
             <div className="flex items-center gap-2">
               <span className="text-slate-300">Designed by</span>
