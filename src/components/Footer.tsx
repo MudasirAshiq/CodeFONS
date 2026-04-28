@@ -78,8 +78,8 @@ export const Footer = () => {
             <div className="flex items-center gap-2">
               <span className="text-slate-300">Designed by</span>
               <div className="flex items-center gap-2.5">
-                <span className="text-primary group-hover:text-primary-dark transition-colors normal-case font-bold">CodeFONS</span>
                 <img src="/logo-icon.png" alt="CF" className="w-6 h-6 rounded-lg shadow-lg group-hover:scale-110 transition-transform" />
+                <span className="text-primary group-hover:text-primary-dark transition-colors normal-case font-bold">CodeFONS</span>
               </div>
             </div>
           </a>
